@@ -1,0 +1,13 @@
+flutter_native_splash:
+  android: true
+  #ios: false
+#
+  color: "#FAFAFA"
+#  image: "assets/images/appIcon.png"  # ضع مسار الصورة هنا
+#  android_gravity: center  # يضمن وضع الصورة في المنتصف
+#  full_screen: true
+
+  android_12:
+    image: assets/images/splashIcon.png  # استبدله بالصورة الخاصة بك
+    color: "#FAFAFA"  # لون الخلفية
+
