@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hotel_hub/features/auth/presentation/views/login_view.dart';
 import 'package:hotel_hub/features/onboarding/data/models/onboarding_object.dart';
 import 'package:hotel_hub/features/onboarding/presentation/manager/onboarding_cubit/onboarding_states.dart';
 
@@ -35,5 +36,22 @@ class OnboardingCubit extends Cubit<OnboardingStates> {
   void changeIndex({required int value}) {
     currentIndex = value;
     emit(OnboardingChange());
+
+    //log(currentIndex.toString());
+  }
+
+  void next() {
+    pageController.animateToPage(++currentIndex,
+        duration: Duration(milliseconds: 400), curve: Curves.linear);
+    //log(currentIndex.toString());
+  }
+
+  void skip({required BuildContext context}) {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => LoginView(),
+      ),
+    );
+    emit(OnboardingSkip());
   }
 }
