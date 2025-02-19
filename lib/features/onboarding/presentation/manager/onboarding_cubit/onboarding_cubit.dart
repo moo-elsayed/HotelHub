@@ -1,12 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hotel_hub/features/auth/presentation/views/login_view.dart';
 import 'package:hotel_hub/features/onboarding/data/models/onboarding_object.dart';
 import 'package:hotel_hub/features/onboarding/presentation/manager/onboarding_cubit/onboarding_states.dart';
 
 class OnboardingCubit extends Cubit<OnboardingStates> {
   OnboardingCubit() : super(OnboardingInitial());
-  final PageController pageController = PageController();
   int currentIndex = 0;
   late final List<OnboardingObject> list = _getList();
 
@@ -37,21 +34,9 @@ class OnboardingCubit extends Cubit<OnboardingStates> {
     currentIndex = value;
     emit(OnboardingChange());
 
-    //log(currentIndex.toString());
   }
 
-  void next() {
-    pageController.animateToPage(++currentIndex,
-        duration: Duration(milliseconds: 400), curve: Curves.linear);
-    //log(currentIndex.toString());
-  }
-
-  void skip({required BuildContext context}) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => LoginView(),
-      ),
-    );
-    emit(OnboardingSkip());
+  int next() {
+    return ++currentIndex;
   }
 }

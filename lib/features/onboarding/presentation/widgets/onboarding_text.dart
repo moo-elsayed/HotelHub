@@ -6,10 +6,9 @@ import 'onboarding_indicator.dart';
 
 class OnboardingText extends StatelessWidget {
   const OnboardingText(
-      {super.key, required this.onboardingObject, required this.cubit});
+      {super.key, required this.onboardingObject});
 
   final OnboardingObject onboardingObject;
-  final OnboardingCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +27,7 @@ class OnboardingText extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          OnboardingIndicator(
-            cubit: cubit,
-          ),
+          OnboardingIndicator(),
           SizedBox(
             height: 20,
           ),

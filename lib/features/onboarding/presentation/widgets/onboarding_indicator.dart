@@ -6,29 +6,27 @@ import 'package:hotel_hub/features/onboarding/presentation/manager/onboarding_cu
 import '../manager/onboarding_cubit/onboarding_cubit.dart';
 
 class OnboardingIndicator extends StatelessWidget {
-  const OnboardingIndicator({super.key, required this.cubit});
-
-  final OnboardingCubit cubit;
+  const OnboardingIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var onboardingCubit = BlocProvider.of<OnboardingCubit>(context);
     return BlocBuilder<OnboardingCubit, OnboardingStates>(
       builder: (context, state) => Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(
-          cubit.list.length,
+          onboardingCubit.list.length,
           (index) {
             return Container(
               margin: EdgeInsets.only(right: index == 2 ? 0 : 5),
               height: 4,
-              width: index == cubit.currentIndex ? 50 : 10,
+              width: index == onboardingCubit.currentIndex ? 50 : 10,
               decoration: ShapeDecoration(
-                color: index == cubit.currentIndex
+                color: index == onboardingCubit.currentIndex
                     ? KPrimaryColor
                     : Color(0xff9D9EA6),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50)
-                ),
+                    borderRadius: BorderRadius.circular(50)),
               ),
             );
           },

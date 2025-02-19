@@ -1,31 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hotel_hub/core/utils/app_router.dart';
 import 'package:hotel_hub/features/onboarding/presentation/manager/onboarding_cubit/onboarding_cubit.dart';
 import 'package:hotel_hub/features/onboarding/presentation/manager/onboarding_cubit/onboarding_states.dart';
 import 'package:hotel_hub/features/onboarding/presentation/widgets/onboarding_view_content.dart';
 
+import '../../../auth/presentation/views/login_view.dart';
 import 'buttons.dart';
 
-class OnboardingViewBody extends StatelessWidget {
+class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
 
   @override
+  State<OnboardingViewBody> createState() => _OnboardingViewBodyState();
+}
+
+class _OnboardingViewBodyState extends State<OnboardingViewBody> {
+  final PageController pageController = PageController();
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var cubit = BlocProvider.of<OnboardingCubit>(context);
+    var onboardingCubit = BlocProvider.of<OnboardingCubit>(context);
     return Column(
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.height * .85,
           child: PageView.builder(
-            controller: cubit.pageController,
-            itemCount: cubit.list.length,
+            controller: pageController,
+            itemCount: onboardingCubit.list.length,
             onPageChanged: (value) {
-              cubit.changeIndex(value: value);
+              onboardingCubit.changeIndex(value: value);
             },
             itemBuilder: (context, index) {
               return OnboardingViewContent(
-                cubit: cubit,
-                onboardingObject: cubit.list[index],
+                onboardingObject: onboardingCubit.list[index],
               );
             },
           ),
@@ -36,19 +51,25 @@ class OnboardingViewBody extends StatelessWidget {
             color: Colors.white,
             width: double.infinity,
             padding: EdgeInsets.all(30),
-            child: cubit.currentIndex != 2
+            child: onboardingCubit.currentIndex != 2
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ButtonSkip(
                         onPressed: () {
-                          cubit.skip(context: context);
+                          //context.go(AppRouter.KLoginView);
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => LoginView()));
                         },
                       ),
                       ButtonNext(
                         title: 'Next',
                         onPressed: () {
-                          cubit.next();
+                          int currentIndex = onboardingCubit.next();
+                          pageController.animateToPage(currentIndex,
+                              duration: Duration(milliseconds: 400),
+                              curve: Curves.linear);
                         },
                       ),
                     ],
@@ -56,7 +77,9 @@ class OnboardingViewBody extends StatelessWidget {
                 : ButtonNext(
                     title: 'Get Started',
                     onPressed: () {
-                      cubit.skip(context: context);
+                      //context.go(AppRouter.KLoginView);
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => LoginView()));
                     },
                   ),
           ),
