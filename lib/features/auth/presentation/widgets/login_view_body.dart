@@ -101,7 +101,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   ),
                 )
               ],
-            )
+            ),
           ],
         ),
       ),

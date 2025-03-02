@@ -35,7 +35,11 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.only(right: 20,left: 20,top: MediaQuery.of(context).size.height * .11),
+        padding: EdgeInsets.only(
+          right: 20,
+          left: 20,
+          top: MediaQuery.of(context).size.height * .11,
+        ),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +99,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 // prefixIcon: Icon(Icons.lock),
               ),
               SizedBox(height: 32),
-              Button(title: 'Login', onPressed: () {}),
+              Button(title: 'Register', onPressed: () {}),
               const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -51,9 +51,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FaIcon(visibility == false
-                    ? widget.suffixIcon
-                    : FontAwesomeIcons.eye),
+                FaIcon(
+                  visibility == false
+                      ? widget.suffixIcon
+                      : FontAwesomeIcons.eye,
+                  size: 22,
+                ),
               ],
             )),
         border: getBorder(),
