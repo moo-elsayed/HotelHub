@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_hub/features/onboarding/data/models/onboarding_object.dart';
-import 'package:hotel_hub/features/onboarding/presentation/manager/onboarding_cubit/onboarding_cubit.dart';
 
 import 'onboarding_indicator.dart';
 

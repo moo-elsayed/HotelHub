@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_hub/constants.dart';
-
-import '../../../../core/utils/functions/buttons_helper.dart';
+import '../../../../core/utils/helperFunctions.dart';
 
 class ButtonNext extends StatelessWidget {
   const ButtonNext({

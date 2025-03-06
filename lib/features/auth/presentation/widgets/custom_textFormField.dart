@@ -11,7 +11,8 @@ class CustomTextFormField extends StatefulWidget {
       this.prefixIcon,
       required this.labelText,
       this.suffixIcon,
-      required this.keyboardType});
+      required this.keyboardType,
+      this.onChanged});
 
   final TextEditingController controller;
   final String hintText;
@@ -19,6 +20,7 @@ class CustomTextFormField extends StatefulWidget {
   final Widget? prefixIcon;
   final IconData? suffixIcon;
   final TextInputType keyboardType;
+  final void Function(String)? onChanged;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -37,6 +39,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               ? false
               : true,
       keyboardType: widget.keyboardType,
+      onChanged: widget.onChanged,
+      validator: (val) {
+        if (val!.isEmpty) {
+          return 'field is required';
+        }
+        return null;
+      },
       decoration: InputDecoration(
         filled: true,
         fillColor: KTextFieldColor,
