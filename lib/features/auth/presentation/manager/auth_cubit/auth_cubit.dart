@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_hub/features/auth/data/models/register_input.dart';
-import 'package:hotel_hub/features/auth/domain/repos/auth_repo.dart';
+import 'package:hotel_hub/features/auth/domain/auth_repo.dart';
 import '../../../data/models/login_input.dart';
 import 'auth_states.dart';
 

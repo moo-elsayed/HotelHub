@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_hub/features/onboarding/presentation/manager/onboarding_cubit/onboarding_cubit.dart';
 import 'package:hotel_hub/features/onboarding/presentation/manager/onboarding_cubit/onboarding_states.dart';
 import 'package:hotel_hub/features/onboarding/presentation/widgets/onboarding_view_content.dart';
+import 'package:hotel_hub/shared_preferences_manager.dart';
 
 import '../../../auth/presentation/views/login_view.dart';
 import 'buttons.dart';
@@ -59,6 +60,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                   builder: (context) => LoginView()));
+                          SharedPreferencesManager.setFirstTime(false);
                         },
                       ),
                       ButtonNext(
@@ -78,6 +80,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                       //context.go(AppRouter.KLoginView);
                       Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (context) => LoginView()));
+                      SharedPreferencesManager.setFirstTime(false);
                     },
                   ),
           ),

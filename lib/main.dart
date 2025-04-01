@@ -1,6 +1,7 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hotel_hub/features/auth/domain/repos/auth_repo.dart';
+import 'package:hotel_hub/features/auth/domain/auth_repo.dart';
 import 'package:hotel_hub/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:hotel_hub/features/home/presentation/views/home_view.dart';
 import 'package:hotel_hub/shared_preferences_manager.dart';
@@ -20,6 +21,9 @@ void main() async {
 
   final bool isFirstTime = results[0];
   final bool loginStatus = results[1];
+
+  log("isFirstTime: $isFirstTime");
+  log("loginStatus: $loginStatus");
 
   runApp(MyApp(
     isFirstTime: isFirstTime,
