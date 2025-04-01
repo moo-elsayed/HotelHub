@@ -62,7 +62,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           SharedPreferencesManager.setEmail(state.loginOutput.email);
           SharedPreferencesManager.setUsername(state.loginOutput.username);
           log(state.loginOutput.token);
+
           log(state.loginOutput.expiresOn.toString());
+
+          log(state.loginOutput.roles[0]);
           Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => HomeView(),
           ));

@@ -64,6 +64,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           SharedPreferencesManager.setAuthToken(state.registerOutput.token);
           SharedPreferencesManager.setExpiresOn(
               state.registerOutput.expires.toString());
+          SharedPreferencesManager.setEmail(emailController.text);
+          SharedPreferencesManager.setUsername(userNameController.text);
           isLoading = false;
           log('success');
           log(state.registerOutput.token);
